@@ -3,16 +3,19 @@
 % All rights reserved
 % Developed by the Aerospace Controls Lab, MIT
 
-%---------------------------------------------------------------------%
+%---------------------------------------------------------------------% 
 % Runs consensus between neighbors
 % Checks for conflicts and resolves among agents
 % 
 % This is a message passing scheme described in Table 1 of:
 % "Consensus-Based Decentralized Auctions for Robust Task Allocation", 
 % H.-L. Choi, L. Brunet, and J. P. How, 
-% IEEE Transactions on Robotics, Vol. 25, (4): 912 – 926, August 2009
-%---------------------------------------------------------------------%
+% IEEE Transactions on Robotics, Vol. 25, (4): 912 926, August 2009
+%---------------------------------------------------------------------% 
 
+% =====================================================================
+% ALGORITHM 2: UPDATE TASK - Communication and consensus between agents
+% =====================================================================
 function [CBBA_Data t] = CBBA_Communicate(CBBA_Params, CBBA_Data, Graph, old_t, T)
 
 % Copy data
@@ -28,6 +31,9 @@ t = old_t;
 epsilon = 10e-6;
 
 
+% =====================================================================
+% ALGORITHM 2: UPDATE TASK - Start communication between agents
+% =====================================================================
 % Start communication between agents
 
 % sender   = k
@@ -39,6 +45,9 @@ for k=1:CBBA_Params.N
         if( Graph(k,i) == 1 )
             for j=1:CBBA_Params.M
 
+                % =====================================================================
+                % ALGORITHM 2: UPDATE TASK - Implement consensus table for each task
+                % =====================================================================
                 % Implement table for each task
                 
                 if( old_z(k,j) == k ) % Entries 1 to 4: Sender thinks he has the task
@@ -225,6 +234,9 @@ for k=1:CBBA_Params.N
     end
 end
 
+% =====================================================================
+% ALGORITHM 2: UPDATE TASK - Copy updated data back to agents
+% =====================================================================
 % Copy data
 for n = 1:CBBA_Params.N,
     CBBA_Data(n).winners    = z(n,:);

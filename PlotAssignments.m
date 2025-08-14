@@ -36,7 +36,7 @@ end
 % Plot agents
 for n=1:length(agents)
     plot3(agents(n).x, agents(n).y, 0,'o','color',Cmap(agents(n).type,:));
-    text(agents(n).x+offset, agents(n).y+offset, 0.1, ['A' num2str(n)]);
+    text(agents(n).x+offset, agents(n).y+offset, 0.1, ['A' num2str(n)], "FontWeight", "bold", "BackgroundColor", "white");
 
     % Check if path has something in it
     if( CBBA_Assignments(n).path(1) > -1 )

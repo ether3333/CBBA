@@ -3,10 +3,13 @@
 % All rights reserved
 % Developed by the Aerospace Controls Lab, MIT
 
-%---------------------------------------------------------------------%
+%---------------------------------------------------------------------% 
 % Main CBBA bundle building/updating (runs on each individual agent)
-%---------------------------------------------------------------------%
+%---------------------------------------------------------------------% 
 
+% =====================================================================
+% ALGORITHM 3: BUILD BUNDLE - Main bundle building/updating function
+% =====================================================================
 function [CBBA_Data newBid] = CBBA_Bundle(CBBA_Params, CBBA_Data, agent, tasks)
 
 % Update bundles after messaging to drop tasks that are outbid

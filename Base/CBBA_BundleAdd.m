@@ -7,6 +7,9 @@
 % Create bundles for each agent
 %---------------------------------------------------------------------%
 
+% =====================================================================
+% ALGORITHM 1: SELECT TASK - Task selection and bundle building
+% =====================================================================
 function [CBBA_Data, newBid] = CBBA_BundleAdd(CBBA_Params, CBBA_Data, agent, tasks)
 
 epsilon = 10e-6;
@@ -18,6 +21,9 @@ bundleFull = isempty(find(CBBA_Data.bundle == -1));
 % Initialize feasibility matrix (to keep track of which j locations can be pruned)
 feasibility = ones(CBBA_Params.M, CBBA_Params.MAX_DEPTH+1); 
 
+% =====================================================================
+% ALGORITHM 1: SELECT TASK - Main while loop for bundle building
+% =====================================================================
 while(bundleFull == 0)
 
     % Update task values based on current assignment
@@ -31,6 +37,9 @@ while(bundleFull == 0)
 
     D = D1 | (D2 & D3);
 
+    % =====================================================================
+    % ALGORITHM 1: SELECT TASK - Select best task (argmax logic)
+    % =====================================================================
     % Select the assignment that will improve the score the most and
     % place bid
     [value bestTask] = max(D.*CBBA_Data.bids);
@@ -55,6 +64,9 @@ while(bundleFull == 0)
             end
         end
 
+        % =====================================================================
+        % ALGORITHM 1: SELECT TASK - Update assignment and bid
+        % =====================================================================
         CBBA_Data.winners(bestTask)    = CBBA_Data.agentIndex;
         CBBA_Data.winnerBids(bestTask) = CBBA_Data.bids(bestTask);
 
