@@ -9,9 +9,12 @@ Simple_Main.m
    │       └── (initialize # of agent, # of task, and task type)
    │
    ├── Simple_Bundle.m
-   │       ├── 1. Communicate (consensus of winner & bidding between agents)
-   │       ├── 2. BundleRemove & BundleAdd (Compare bid --> remove task --> update bundle)
-   │       └── 3. Convergence Check & Calculate result
+   │       ├── [Algorithm 2] Communicate 
+   │       │        (consensus of winner & bidding between agents)
+   │       ├── [Algorithm 1 + part of Algorithm 3] 
+   │       │        BundleRemove & BundleAdd 
+   │       │        (Compare bid --> remove task --> update bundle)
+   │       └── [Algorithm 3] Convergence Check & Calculate result
    │
    └── Simple_Plot.m
            └── (visualize result)
